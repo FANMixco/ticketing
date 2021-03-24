@@ -1,0 +1,19 @@
+apiVersion: skaffold/v2beta12
+kind: Config
+#starts skaffold, recreates pods, services, etc. and stops all if skaffold stops
+deploy:
+  kubectl:
+    manifests:
+      - ./infra/k8s/*
+build:
+  local:
+    push: false
+  artifacts:
+    - image: fanmixco/auth
+      context: auth
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
