@@ -13,16 +13,16 @@ spec:
         app: auth
     spec:
       containers:
-      - name: auth
-        image: fanmixco/auth
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
+        - name: auth
+          image: fanmixco/auth
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
 ---
 apiVersion: v1
 kind: Service
-metada:
+metadata:
   name: auth-srv
 spec:
   selector:
